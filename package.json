@@ -1,0 +1,22 @@
+{
+  "name": "mobile-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate complet pour app mobile avec Expo, Koa et PostgreSQL",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run mobile:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "mobile:dev": "cd mobile && npm start",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "setup": "npm run docker:up && cd backend && npm install && npm run migrate && npm run seed && cd ../mobile && npm install",
+    "migrate": "cd backend && npm run migrate",
+    "seed": "cd backend && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
